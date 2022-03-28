@@ -45,12 +45,6 @@ import shuffle from 'shuffle-array'
           artwork_url,
           permalink_url,
           hlsUrl: media.transcodings[0].url,
-          hlsCachedUrl: (
-            await axios.get(
-              media.transcodings[0].url +
-                '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
-            )
-          ).data.url,
         })
       }
     }
