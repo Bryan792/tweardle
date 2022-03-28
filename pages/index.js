@@ -85,8 +85,8 @@ const Home = (props) => {
     }
   })
 
-  const [url, setUrl] = useState()
-
+  //const [url, setUrl] = useState()
+  /*
   useEffect(() => {
     fetch(
       answer.hlsUrl +
@@ -97,7 +97,7 @@ const Home = (props) => {
         setUrl(data.url)
       })
   }, [answer.hlsUrl])
-
+  */
   useEffect(() => {
     if (answer.gameNumber != gameState.gameNumber) {
       //reset game
@@ -304,7 +304,7 @@ const Home = (props) => {
           </Stack>
           <ReactPlayer
             volume={0.25}
-            url={url}
+            url={answer.hlsCachedUrl}
             ref={ref}
             playing={playing}
             style={{ display: 'none' }}
