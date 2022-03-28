@@ -73,7 +73,7 @@ const Home = (props) => {
     let sotd = songs[sotdIndex]
     //let sotd = randomSong
 
-    let offset = daysSince % (parseInt(sotd.full_duration / 1000) - 30)
+    let offset = daysSince % (parseInt(sotd.duration / 1000) - 20)
 
     var releaseDate = new Date(2022, 2, 26, 0, 0, 0, 0)
     //let gameNumber = Math.floor(today.getMinutes() / 2)
@@ -84,6 +84,19 @@ const Home = (props) => {
       offset,
     }
   })
+
+  const [url, setUrl] = useState()
+
+  useEffect(() => {
+    fetch(
+      answer.hlsUrl +
+        '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setUrl(data.url)
+      })
+  }, [answer.hlsUrl])
 
   useEffect(() => {
     if (answer.gameNumber != gameState.gameNumber) {
@@ -96,7 +109,7 @@ const Home = (props) => {
     ) {
       setCurrentStreak(0)
     }
-  })
+  }, [answer.gameNumber])
 
   let handlePause = () => {
     setPlaying(!playing)
@@ -290,7 +303,7 @@ const Home = (props) => {
           </Stack>
           <ReactPlayer
             volume={0.25}
-            url={answer.permalink_url}
+            url={url}
             ref={ref}
             playing={playing}
             style={{ display: 'none' }}

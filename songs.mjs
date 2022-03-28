@@ -22,36 +22,34 @@ import shuffle from 'shuffle-array'
       label_name,
       artwork_url,
       publisher_metadata,
+      media,
+      id,
     } of songList) {
-      console.log(
-        title,
-        duration,
-        full_duration,
-        policy,
-        permalink_url,
-        label_name,
-        artwork_url,
-        publisher_metadata.album_title
-      )
+      const skippedIds = [1204998934, 1204996348]
       if (
-        policy !== 'SNIP' &&
+        //policy !== 'SNIP' &&
+        !skippedIds.includes(id) &&
         label_name &&
         (label_name.startsWith('WM') ||
           label_name.startsWith('Republic Records')) &&
-        !title.toLowerCase().includes('instrumental')
+        !title.toLowerCase().includes('instrumental') &&
+        !title.toLowerCase().includes('japanese') &&
+        !title.toLowerCase().includes('english') &&
+        !title.toLowerCase().includes('korean')
       ) {
-        console.log('included')
+        console.log(id, title, duration)
         final.push({
           title,
-          full_duration,
+          duration,
           album: publisher_metadata.album_title,
           artwork_url,
           permalink_url,
+          hlsUrl: media.transcodings[0].url,
         })
       }
     }
-    console.log(songList.length)
-    console.log(result.next_href)
+    //console.log(songList.length)
+    //console.log(result.next_href)
     next = result.next_href
   } while (next != null)
   shuffle(final)
