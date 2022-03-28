@@ -85,11 +85,11 @@ const Home = (props) => {
     }
   })
 
-  //const [url, setUrl] = useState()
-  /*
+  const [url, setUrl] = useState()
+
   useEffect(() => {
     fetch(
-      answer.hlsUrl +
+      'https://tweardle.herokuapp.com/' + answer.hlsUrl +
         '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
     )
       .then((res) => res.json())
@@ -97,7 +97,7 @@ const Home = (props) => {
         setUrl(data.url)
       })
   }, [answer.hlsUrl])
-  */
+
   useEffect(() => {
     if (answer.gameNumber != gameState.gameNumber) {
       //reset game
@@ -304,7 +304,7 @@ const Home = (props) => {
           </Stack>
           <ReactPlayer
             volume={0.25}
-            url={answer.hlsCachedUrl}
+            url={url}
             ref={ref}
             playing={playing}
             style={{ display: 'none' }}
