@@ -9,8 +9,8 @@ export default class InfoModal extends React.Component {
           <Modal.Title>HOW TO PLAY</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        Guess the TWEARDLE in six tries.
-        <hr />
+          Guess the TWEARDLE in six tries.
+          <hr />
           <h3>ABOUT</h3>
           Inspired by Wordle, Heardle, Heardle-KPOOP, BTS-Heardle.
         </Modal.Body>

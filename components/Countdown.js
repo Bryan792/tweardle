@@ -8,7 +8,7 @@ const calculateDiff = (eod) => {
 }
 
 export default function Countdown() {
-  const eod = useMemo(() => moment().clone().endOf('day'), []);
+  const eod = useMemo(() => moment().clone().endOf('day'), [])
   const [diff, setDiff] = useState(calculateDiff(eod))
   const timerRef = useRef(0)
   const timerCallback = useCallback(() => {

@@ -11,9 +11,7 @@ function getCardBg(guess, answer) {
 const Guess = ({ guess, answer, border }) => {
   return (
     <Card bg={getCardBg(guess, answer)} border={border}>
-      <Card.Body style={{padding: ".75rem"}}>
-      {guess}&nbsp;
-        </Card.Body>
+      <Card.Body style={{ padding: '.75rem' }}>{guess}&nbsp;</Card.Body>
     </Card>
   )
 }
