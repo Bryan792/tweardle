@@ -249,6 +249,7 @@ const Home = (props) => {
                         paginationText="get rid of me"
                         options={props.titleList || []}
                         placeholder="Guess"
+                        minLength={1}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
                             handleGuess(selected[0])
