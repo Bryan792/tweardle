@@ -26,7 +26,11 @@ export default function Countdown() {
   return (
     <div>
       <h6 className="text-center">Next TWeardle</h6>
-      <h3 className="text-center">{moment.utc(diff).format('HH:mm:ss')}</h3>
+      {diff < 1 ? (
+        <h3 className="text-center">Available</h3>
+      ) : (
+        <h3 className="text-center">{moment.utc(diff).format('HH:mm:ss')}</h3>
+      )}
     </div>
   )
 }
