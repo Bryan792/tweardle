@@ -1,22 +1,18 @@
 import moment from 'moment'
 moment().format()
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useMemo, useCallback, useEffect, useRef, useState } from 'react'
 
-const calculateDuration = () => {
+const calculateDiff = (eod) => {
   let now = moment()
-  return moment.duration(
-    now
-      .clone()
-      .endOf('day')
-      .diff(now)
-  )
+  return eod.diff(now)
 }
 
 export default function Countdown() {
-  const [duration, setDuration] = useState(calculateDuration())
+  const eod = useMemo(() => moment().clone().endOf('day'), []);
+  const [diff, setDiff] = useState(calculateDiff(eod))
   const timerRef = useRef(0)
   const timerCallback = useCallback(() => {
-    setDuration(calculateDuration())
+    setDiff(calculateDiff(eod))
   }, [])
 
   useEffect(() => {
@@ -30,7 +26,7 @@ export default function Countdown() {
   return (
     <div>
       <h6 className="text-center">Next TWeardle</h6>
-      <h3 className="text-center">{moment.utc(duration.asMilliseconds()).format('HH:mm:ss')}</h3>
+      <h3 className="text-center">{moment.utc(diff).format('HH:mm:ss')}</h3>
     </div>
   )
 }
