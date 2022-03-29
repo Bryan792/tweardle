@@ -88,10 +88,25 @@ const Home = (props) => {
   const [url, setUrl] = useState()
 
   useEffect(() => {
-    fetch(
-      'https://tweardle.herokuapp.com/' + answer.hlsUrl +
-        '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
-    )
+    function status(res) {
+      if (!res.ok) {
+        throw new Error(res.statusText)
+      }
+      return res
+    }
+
+    Promise.any([
+      fetch(
+        'https://tweardle.herokuapp.com/' +
+          answer.hlsUrl +
+          '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
+      ).then(status),
+      fetch(
+        'https://cores.bryanching.net/' +
+          answer.hlsUrl +
+          '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
+      ).then(status),
+    ])
       .then((res) => res.json())
       .then((data) => {
         setUrl(data.url)
