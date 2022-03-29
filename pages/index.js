@@ -179,7 +179,7 @@ const Home = (props) => {
       setMaxStreak(Math.max(currentStreak + 1, maxStreak))
       status = STATUS_SOLVED
       setToastStatus({
-        text: 'Yay',
+        text: 'Bust out the Candybong',
         show: true,
         bg: 'success',
       })
