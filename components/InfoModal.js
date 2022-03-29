@@ -1,20 +1,21 @@
 import React from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Container } from 'react-bootstrap'
 
 export default class InfoModal extends React.Component {
   render() {
     return (
       <Modal {...this.props}>
         <Modal.Header closeButton>
-          <Modal.Title>HOW TO PLAY</Modal.Title>
+          <Modal.Title className="text-center w-100">HOW TO PLAY</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Guess the TWEARDLE in six tries.
-          <hr />
-          <h3>ABOUT</h3>
-          Inspired by Wordle, Heardle, Heardle-KPOOP, BTS-Heardle.
+          <Container>
+            Guess the TWEARDLE in six tries.
+            <hr />
+            <h4 className="text-center w-100">ABOUT</h4>
+            Inspired by Wordle, Heardle, Heardle-KPOP, BTS-Heardle.
+          </Container>
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
       </Modal>
     )
   }
