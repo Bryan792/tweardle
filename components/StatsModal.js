@@ -27,9 +27,9 @@ ChartJS.register(
 )
 
 const Stat = (props) => (
-  <div {...props}>
-    <div className="text-center">{props.stat}</div>
-    <div className="text-center">{props.label}</div>
+  <div style={{ width: '60px' }} {...props}>
+    <h4 className="text-center">{props.stat}</h4>
+    <h6 className="text-center">{props.label}</h6>
   </div>
 )
 
@@ -49,81 +49,80 @@ const StatsModal = (props) => {
   return (
     <Modal {...props}>
       <Modal.Header closeButton>
-        <Modal.Title>STATS</Modal.Title>
+        <Modal.Title className="text-center w-100">STATS</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Stack
-          direction="horizontal"
-          gap={3}
-          className="mx-auto justify-content-center"
-        >
-          <Stat stat={played} label={'Played'} />
-          <Stat stat={parseInt((wins / played) * 100 || 0)} label={'Win %'} />
-          <Stat stat={props.currentStreak} label={'Current Streak'} />
-          <Stat stat={props.maxStreak} label={'Max Streak'} />
-        </Stack>
-
-        <Bar
-          options={{
-            tooltips: {
-              enabled: false,
-            },
-            legend: {
-              display: false,
-            },
-            scales: {
-              x: {
-                grid: {
-                  display: false,
-                },
-              },
-              y: {
-                display: false,
-                grid: {
-                  display: false,
-                },
-              },
-            },
-            responsive: true,
-            plugins: {
-              tooltip: {
+        <Container>
+          <Stack
+            direction="horizontal"
+            gap={4}
+            className="mx-auto justify-content-center align-items-start"
+          >
+            <Stat stat={played} label={'Played'} />
+            <Stat stat={parseInt((wins / played) * 100 || 0)} label={'Win %'} />
+            <Stat stat={props.currentStreak} label={'Current Streak'} />
+            <Stat stat={props.maxStreak} label={'Max Streak'} />
+          </Stack>
+          <hr />
+          <Bar
+            options={{
+              indexAxis: 'y',
+              tooltips: {
                 enabled: false,
               },
               legend: {
                 display: false,
               },
-              datalabels: {
-                formatter: (value) => {
-                  return value > 0 ? value : ''
+              scales: {
+                x: {
+                  display: false,
+                  grid: {
+                    display: false,
+                  },
                 },
-                anchor: 'end',
-                align: 'start',
-                labels: {
-                  value: {
+                y: {
+                  grid: {
+                    display: false,
+                  },
+                  ticks: {
                     color: 'white',
                   },
                 },
               },
-            },
-          }}
-          data={{
-            labels: ['1', '2', '3', '4', '5', '6'],
-            datasets: [
-              {
-                label: 'TEST',
-                data: props.stats.slice(0, 6),
-                backgroundColor: [
-                  'rgba(0, 0, 0, 1)',
-                  'rgba(0, 0, 0, 1)',
-                  'rgba(0, 0, 0, 1)',
-                  'rgba(0, 0, 0, 1)',
-                  'rgba(0, 0, 0, 1)',
-                  'rgba(0, 0, 0, 1)',
-                ],
+              responsive: true,
+              plugins: {
+                tooltip: {
+                  enabled: false,
+                },
+                legend: {
+                  display: false,
+                },
+                datalabels: {
+                  formatter: (value) => {
+                    return value > 0 ? value : ''
+                  },
+                  anchor: 'end',
+                  align: 'start',
+                  labels: {
+                    value: {
+                      color: 'white',
+                    },
+                  },
+                },
               },
-            ],
-          }}
-        />
+            }}
+            data={{
+              labels: ['1', '2', '3', '4', '5', '6'],
+              datasets: [
+                {
+                  label: 'TEST',
+                  data: props.stats.slice(0, 6),
+                  backgroundColor: ['#3498db'],
+                },
+              ],
+            }}
+          />
+        </Container>
       </Modal.Body>
     </Modal>
   )
