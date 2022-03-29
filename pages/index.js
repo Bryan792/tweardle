@@ -212,8 +212,9 @@ const Home = (props) => {
                     <Countdown />
                     <Button
                       variant="primary"
+                      size="lg"
                       onClick={() => {
-                        let shareText = `TWeardle ${gameState.gameNumber}\n\n`
+                        let shareText = `TWeardle (the other TWICE Heardle) ${gameState.gameNumber}\n\n`
                         if (gameState.status === STATUS_SOLVED)
                           shareText += '🔊'
                         else shareText += '🔇'
