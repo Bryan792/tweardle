@@ -3,10 +3,7 @@ import styles from '../styles/Home.module.css'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import { Stack, Image } from 'react-bootstrap'
+import { Stack, Image, Form, Button, Card, Spinner } from 'react-bootstrap'
 import { Typeahead } from 'react-bootstrap-typeahead' // ES2015
 
 import Header from 'components/Header'
@@ -250,7 +247,7 @@ const Home = (props) => {
                 </Card>
               </>
             )}
-            {playerReady && (
+            {playerReady ? (
               <>
                 {gameState.status === STATUS_PENDING && (
                   <Form>
@@ -316,6 +313,10 @@ const Home = (props) => {
                   )}
                 </Stack>
               </>
+            ) : (
+              <Spinner animation="border" role="status" className="mx-auto">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
             )}
           </Stack>
           <ReactPlayer
