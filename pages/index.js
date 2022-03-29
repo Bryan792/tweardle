@@ -3,7 +3,17 @@ import styles from '../styles/Home.module.css'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 
-import { Stack, Image, Form, Button, Card, Spinner } from 'react-bootstrap'
+import {
+  Stack,
+  Image,
+  Form,
+  Button,
+  Card,
+  Spinner,
+  Toast,
+  ToastContainer,
+} from 'react-bootstrap'
+
 import { Typeahead } from 'react-bootstrap-typeahead' // ES2015
 
 import Header from 'components/Header'
@@ -84,6 +94,12 @@ const Home = (props) => {
 
   const [url, setUrl] = useState()
 
+  const [toastStatus, setToastStatus] = useState({
+    text: '',
+    show: false,
+    bg: 'Primary',
+  })
+
   useEffect(() => {
     function status(res) {
       if (!res.ok) {
@@ -162,6 +178,11 @@ const Home = (props) => {
       setCurrentStreak(currentStreak + 1)
       setMaxStreak(Math.max(currentStreak + 1, maxStreak))
       status = STATUS_SOLVED
+      setToastStatus({
+        text: 'Yay',
+        show: true,
+        bg: 'success',
+      })
     } else if (newGuesses.length === attemptLength.length) {
       //failed
       let newStats = [...stats]
@@ -169,6 +190,11 @@ const Home = (props) => {
       setStats(newStats)
       setCurrentStreak(0)
       status = STATUS_FAILED
+      setToastStatus({
+        text: 'Are you even a ONCE?',
+        show: true,
+        bg: 'danger',
+      })
     }
     setGameState({ ...gameState, guesses: newGuesses, status: status })
     setSelected([])
@@ -224,6 +250,11 @@ const Home = (props) => {
                         }
                         shareText += '\nhttps://tweardle.bryanching.net/'
                         navigator.clipboard.writeText(shareText)
+                        setToastStatus({
+                          text: 'Copied to clipboard',
+                          show: true,
+                          bg: 'info',
+                        })
                       }}
                     >
                       Share <Icon.Share />
@@ -353,6 +384,19 @@ const Home = (props) => {
             currentStreak={currentStreak}
             maxStreak={maxStreak}
           />
+          <ToastContainer className="p-3" position="middle-center">
+            <Toast
+              onClose={() => {
+                setToastStatus({ show: false })
+              }}
+              show={toastStatus.show}
+              delay={2000}
+              autohide
+              bg={toastStatus.bg}
+            >
+              <Toast.Body>{toastStatus.text}</Toast.Body>
+            </Toast>
+          </ToastContainer>
         </main>
       </div>
     </NoSSRWrapper>
