@@ -217,7 +217,7 @@ const Home = (props) => {
           <title>TWeardle {answer.gameNumber}</title>
         </Head>
 
-        <main className={[styles.fill, 'container-md', 'pb-3'].join(' ')}>
+        <main className={[styles.fill, 'container-md'].join(' ')}>
           <Stack gap={2} className={styles.fill}>
             <Header
               onClickInfo={() => setShowInfo(true)}
@@ -279,7 +279,7 @@ const Home = (props) => {
               </>
             )}
             {playerReady ? (
-              <>
+              <div className="bg-dark p-3">
                 {gameState.status === STATUS_PENDING && (
                   <Form>
                     <Form.Group className="mb-3" controlId="formGuess">
@@ -343,7 +343,7 @@ const Home = (props) => {
                     </Button>
                   )}
                 </Stack>
-              </>
+              </div>
             ) : (
               <Spinner animation="border" role="status" className="mx-auto">
                 <span className="visually-hidden">Loading...</span>
