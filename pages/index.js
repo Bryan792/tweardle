@@ -112,12 +112,12 @@ const Home = (props) => {
       fetch(
         'https://tweardle.herokuapp.com/' +
           answer.hlsUrl +
-          '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
+          '?client_id=qpb3ePPttWrQPwdAw7dRY7sxJCe6Z8pj&app_version=1647868284&app_locale=e'
       ).then(status),
       fetch(
         'https://cores.bryanching.net/' +
           answer.hlsUrl +
-          '?client_id=u8V3dqZ2Fiu0ciuXebiXDmUpKEeVEDmw&app_version=1647868284&app_locale=e'
+          '?client_id=qpb3ePPttWrQPwdAw7dRY7sxJCe6Z8pj&app_version=1647868284&app_locale=e'
       ).then(status),
     ])
       .then((res) => res.json())
