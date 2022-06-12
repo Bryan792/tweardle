@@ -214,7 +214,7 @@ const Home = (props) => {
         `}</style>
 
         <Head>
-          <title>TWeardle {answer.gameNumber}</title>
+          <title>TWeardle (the other TWICE Heardle)</title>
         </Head>
 
         <main className={[styles.fill, 'container-md'].join(' ')}>
