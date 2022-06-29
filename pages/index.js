@@ -108,16 +108,18 @@ const Home = (props) => {
       return res
     }
 
+    let clientid = 'JMaqxxcaLZeb3nGPAc34f25ieyDBFUub'
+    
     Promise.any([
       fetch(
         'https://tweardle.herokuapp.com/' +
           answer.hlsUrl +
-          '?client_id=cyfcuTc4OKTJ09j8IoqWUZQkZ7QFN3p8&app_version=1647868284&app_locale=e'
+          `?client_id=${clientid}&app_version=1647868284&app_locale=e`
       ).then(status),
       fetch(
         'https://cores.bryanching.net/' +
           answer.hlsUrl +
-          '?client_id=cyfcuTc4OKTJ09j8IoqWUZQkZ7QFN3p8&app_version=1647868284&app_locale=e'
+          `?client_id=${clientid}&app_version=1647868284&app_locale=e`
       ).then(status),
     ])
       .then((res) => res.json())
