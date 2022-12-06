@@ -112,12 +112,7 @@ const Home = (props) => {
     
     Promise.any([
       fetch(
-        'https://tweardle.herokuapp.com/' +
-          answer.hlsUrl +
-          `?client_id=${clientid}&app_version=1647868284&app_locale=e`
-      ).then(status),
-      fetch(
-        'https://cores.bryanching.net/' +
+        'https://cores.onrender.com/' +
           answer.hlsUrl +
           `?client_id=${clientid}&app_version=1647868284&app_locale=e`
       ).then(status),
