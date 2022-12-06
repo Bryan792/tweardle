@@ -109,12 +109,11 @@ const Home = (props) => {
     }
 
     let clientid = 'YeTcsotswIIc4sse5WZsXszVxMtP6eLc'
-    
+
     Promise.any([
-      fetch(
-        'https://cores.onrender.com/' +
-          answer.hlsUrl +
-          `?client_id=${clientid}&app_version=1647868284&app_locale=e`
+      fetch( 
+        'https://corsproxy.io/?' + encodeURIComponent(answer.hlsUrl +
+          `?client_id=${clientid}&app_version=1647868284&app_locale=e`)
       ).then(status),
     ])
       .then((res) => res.json())
